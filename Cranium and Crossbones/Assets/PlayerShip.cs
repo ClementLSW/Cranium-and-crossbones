@@ -10,6 +10,10 @@ public class PlayerShip : Ship
 
     public float actualSpeed;
     public float targetSpeed;
+
+    public float maxRotationValue = 10.0f;
+    public float currentRotationValue = 0.0f;
+
     int wood;
     public Dictionary<string, string> inv;
 

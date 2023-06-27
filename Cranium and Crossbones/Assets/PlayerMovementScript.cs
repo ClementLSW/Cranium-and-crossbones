@@ -31,9 +31,11 @@ public class PlayerMovementScript : MonoBehaviour
         }else if (Input.GetKeyDown("a"))
         {
             // Rotate Counter Clockwise
+            RotateCounterClockwise();
         }else if (Input.GetKeyDown("d"))
         {
             // Rotate Clockwise
+            RotateClockwise();
         }
 
         // Actual Speed will ramp up/down until reaching Target Speed
@@ -50,6 +52,8 @@ public class PlayerMovementScript : MonoBehaviour
 
         //Debug.Log("Actual Speed : " + player.actualSpeed);
 
+        transform.Rotate(0, 0, player.currentRotationValue * Time.deltaTime);
+        lookDir = -transform.up;
         rb.velocity =  lookDir * player.actualSpeed;
     }
 
@@ -84,10 +88,25 @@ public class PlayerMovementScript : MonoBehaviour
     void RotateClockwise()
     {
         Debug.Log("Rotate Clockwise");
+        if(player.currentRotationValue == 0.0f)
+        {
+            player.currentRotationValue = -player.maxRotationValue;
+        }else if(player.currentRotationValue <= 0)
+        {
+            player.currentRotationValue = 0.0f;
+        }
     }
 
     void RotateCounterClockwise()
     {
         Debug.Log("Rotate Counter Clockwise");
+        if (player.currentRotationValue == 0.0f)
+        {
+            player.currentRotationValue = player.maxRotationValue;
+        }
+        else if (player.currentRotationValue >= 0)
+        {
+            player.currentRotationValue = 0.0f;
+        }
     }
 }
