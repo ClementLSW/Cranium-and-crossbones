@@ -11,7 +11,7 @@ public class PlayerShip : Ship
     public float actualSpeed;
     public float targetSpeed;
 
-    public float maxRotationValue = 10.0f;
+    public float maxRotationValue = 450.0f;
     public float currentRotationValue = 0.0f;
 
     int wood;
@@ -150,7 +150,7 @@ public class PlayerShip : Ship
                 foreach (Transform t in selectedCannon)
                     {
                         GameObject obj = Instantiate(roundShotPrefab, t.position, Quaternion.identity);
-                        obj.GetComponent<RoundShot>().SetDirectionVector(target);
+                        obj.GetComponent<RoundShot>().SetDirectionVector(target, true);
                         Debug.Log("Roundshot out");
                     }
                 break;

@@ -48,6 +48,8 @@ public class Ship : MonoBehaviour
         {
             hull_renderer.sprite = hull_sprites[1];
         }
+
+        Debug.Log("Hull Damaged, Hull Integrity: " + m_hull_integrity.ToString());
     }
 
     public virtual void TakeSailDamage(int damage)
@@ -62,17 +64,21 @@ public class Ship : MonoBehaviour
         {
             sail_renderer.sprite = sail_sprites[1];
         }
+
+        Debug.Log("Sail Damaged, Sail Integrity: " + m_sail_integrity.ToString());
     }
 
     public virtual void TakeManpowerDamage(int damage)
     {
         m_manpower -= damage * (max_hull / m_hull_integrity);
+
+        Debug.Log("Manpower Left: " + m_manpower);
     }
 
     public void LoadShipStats(string shiptype)
     {
 
-        stats = JSONParser.ParseFromFile("assets/data/"+shiptype+"ShipStats.json");
+        stats = JSONParser.ParseFromFile(shiptype+"ShipStats");
 
         Initialize(
             float.Parse(stats["speed"]),
