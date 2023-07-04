@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1572797779
-  m_SortingLayer: 1
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -1740357729, guid: 860adfcdd3505554ea26346b970a7c96, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7419234550766004732}
   - component: {fileID: 7419234550766004733}
+  - component: {fileID: 265203103740955771}
   m_Layer: 0
   m_Name: Merchant Ship
   m_TagString: Untagged
@@ -144,6 +145,32 @@ MonoBehaviour:
   - {fileID: 2078007374, guid: 860adfcdd3505554ea26346b970a7c96, type: 3}
   hull_renderer: {fileID: 7419234550128670456}
   sail_renderer: {fileID: 7419234551145760186}
+--- !u!61 &265203103740955771
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7419234550766004734}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.00000011920929, y: 0.016367912}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.30786967, y: 0.7802019}
+  m_EdgeRadius: 0
 --- !u!1 &7419234551145760187
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,7 +242,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1572797779
-  m_SortingLayer: 1
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: 1093683242, guid: 860adfcdd3505554ea26346b970a7c96, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

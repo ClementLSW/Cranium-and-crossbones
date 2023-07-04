@@ -6,7 +6,7 @@ public class MerchantShip : Ship
 {
     void LoadShipStats()
     {
-        stats = JSONParser.ParseFromFile("assets/data/PlayerShipStats.json");
+        stats = JSONParser.ParseFromFile("MerchantShipStats");
 
         Initialize(
             float.Parse(stats["speed"]),
@@ -19,7 +19,7 @@ public class MerchantShip : Ship
     // Start is called before the first frame update
     void Start()
     {
-        
+        LoadShipStats();
     }
 
     // Update is called once per frame

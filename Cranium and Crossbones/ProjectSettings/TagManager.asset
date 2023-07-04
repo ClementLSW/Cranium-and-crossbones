@@ -44,6 +44,12 @@ TagManager:
   - name: Terrain
     uniqueID: 4131046597
     locked: 0
+  - name: Projectile
+    uniqueID: 679549883
+    locked: 0
   - name: Vessel
     uniqueID: 2722169517
+    locked: 0
+  - name: Enemy
+    uniqueID: 508093257
     locked: 0

@@ -52,7 +52,7 @@ public class PlayerMovementScript : MonoBehaviour
 
         //Debug.Log("Actual Speed : " + player.actualSpeed);
 
-        transform.Rotate(0, 0, player.currentRotationValue * Time.deltaTime);
+        transform.Rotate(0, 0, player.currentRotationValue * Time.deltaTime * 10);
         lookDir = -transform.up;
         rb.velocity =  lookDir * player.actualSpeed;
     }
@@ -91,7 +91,7 @@ public class PlayerMovementScript : MonoBehaviour
         if(player.currentRotationValue == 0.0f)
         {
             player.currentRotationValue = -player.maxRotationValue;
-        }else if(player.currentRotationValue <= 0)
+        }else if(player.currentRotationValue >= 0)
         {
             player.currentRotationValue = 0.0f;
         }
@@ -104,7 +104,7 @@ public class PlayerMovementScript : MonoBehaviour
         {
             player.currentRotationValue = player.maxRotationValue;
         }
-        else if (player.currentRotationValue >= 0)
+        else if (player.currentRotationValue <= 0)
         {
             player.currentRotationValue = 0.0f;
         }

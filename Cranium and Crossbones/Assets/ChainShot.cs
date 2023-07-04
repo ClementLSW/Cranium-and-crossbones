@@ -7,19 +7,21 @@ public class ChainShot : MonoBehaviour
     private float decay;
     private Vector3 dir;
     private float projectileVelocity;
+    private bool isPlayerProjectile;
 
     private void Awake()
     {
         decay = 3.0f;
         projectileVelocity = 2.0f;
     }
-    public void SetDirectionVector(Vector3 target)
+    public void SetDirectionVector(Vector3 target, bool isPlayer)
     {
         target.z = this.transform.position.z;       // Very importante
         dir = (target - this.transform.position).normalized;
         Debug.Log(dir);
         Debug.Log(dir.magnitude);
         gameObject.GetComponent<Rigidbody2D>().velocity = dir * projectileVelocity;
+        isPlayerProjectile = isPlayer;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

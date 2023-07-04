@@ -7,14 +7,16 @@ public class RoundShot : MonoBehaviour
     private float decay;
     private Vector3 dir;
     private float projectileVelocity;
+    private bool isPlayerProjectile;
 
     private void Awake()
     {
         decay = 5.0f;
         projectileVelocity = 2.0f;
     }
-    public void SetDirectionVector(Vector3 target)
+    public void SetDirectionVector(Vector3 target, bool isPlayer)
     {
+        isPlayerProjectile = isPlayer;
         target.z = this.transform.position.z;       // Very importante
         dir = (target - this.transform.position).normalized;
         Debug.Log(dir);
@@ -24,15 +26,21 @@ public class RoundShot : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<Ship>())
-        {
-            Ship ship = collision.gameObject.GetComponent<Ship>();
-            ship.TakeHullDamage(20);
-        }
-        else
-        {
+
+        Debug.Log("Collision with " + collision.gameObject.name);
+
+        if(isPlayerProjectile ^ collision.gameObject.tag == "Player") {
+            if (collision.gameObject.GetComponent<Ship>())
+            {
+                Ship ship = collision.gameObject.GetComponent<Ship>();
+                ship.TakeHullDamage(20);
+            }
             despawn();
         }
+        else {
+            return;
+        }
+
     }
 
     private void Update()
@@ -44,7 +52,6 @@ public class RoundShot : MonoBehaviour
         else
         {
             decay -= Time.deltaTime;
-            //transform.Translate(dir * projectileVelocity * Time.deltaTime);
         }
     }
 

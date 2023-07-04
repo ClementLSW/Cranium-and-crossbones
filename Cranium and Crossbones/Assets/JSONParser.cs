@@ -3,7 +3,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 /// <summary>
 /// Custom Suite of tools for reading and writing to JSON
@@ -25,7 +24,7 @@ public class JSONParser
     {
         Dictionary<string, string> result = new Dictionary<string, string>();
 
-        using (StreamReader r = new StreamReader(filename))
+        using (StreamReader r = new StreamReader("assets/data/" + filename + ".json"))
         {
             string json = r.ReadToEnd();
             result = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);

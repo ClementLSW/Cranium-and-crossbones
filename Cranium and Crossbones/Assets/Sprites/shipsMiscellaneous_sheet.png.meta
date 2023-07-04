@@ -758,7 +758,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shipsMiscellaneous_sheet_30
+      name: Pirate_Sail_Pristine
       rect:
         serializedVersion: 2
         x: 544
@@ -1934,7 +1934,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shipsMiscellaneous_sheet_86
+      name: Pirate_Sail_Destroyed
       rect:
         serializedVersion: 2
         x: 204
@@ -1955,7 +1955,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shipsMiscellaneous_sheet_87
+      name: Pirate_Sail_Damaged
       rect:
         serializedVersion: 2
         x: 272
@@ -2123,7 +2123,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shipsMiscellaneous_sheet_95
+      name: Cannon_Fort
       rect:
         serializedVersion: 2
         x: 408
@@ -2144,7 +2144,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shipsMiscellaneous_sheet_96
+      name: Cannon_Ship
       rect:
         serializedVersion: 2
         x: 439
@@ -2304,6 +2304,7 @@ TextureImporter:
       shipsMiscellaneous_sheet_2: -1575517280
       shipsMiscellaneous_sheet_79: -1742388323
       shipsMiscellaneous_sheet_72: 1804711495
+      Cannon_Ship: 779428916
       shipsMiscellaneous_sheet_9: -910421355
       shipsMiscellaneous_sheet_43: -1104886112
       shipsMiscellaneous_sheet_70: -1472355087
@@ -2318,7 +2319,6 @@ TextureImporter:
       shipsMiscellaneous_sheet_26: -1901491652
       shipsMiscellaneous_sheet_76: -361609740
       shipsMiscellaneous_sheet_84: 2003672803
-      shipsMiscellaneous_sheet_96: 779428916
       shipsMiscellaneous_sheet_5: 1972613250
       shipsMiscellaneous_sheet_42: 1326179310
       shipsMiscellaneous_sheet_24: -1250358513
@@ -2337,6 +2337,7 @@ TextureImporter:
       Merchant_Sail_Pristine: 1093683242
       shipsMiscellaneous_sheet_6: -1037042497
       shipsMiscellaneous_sheet_36: 1125503760
+      Pirate_Sail_Destroyed: -1378106287
       shipsMiscellaneous_sheet_73: 451103216
       shipsMiscellaneous_sheet_78: 2003149397
       Warship_Hull_Pristine: 517126814
@@ -2346,16 +2347,16 @@ TextureImporter:
       Warship_Hull_Destroyed: 2086931307
       shipsMiscellaneous_sheet_34: 1715605084
       shipsMiscellaneous_sheet_29: 289589903
-      shipsMiscellaneous_sheet_30: -2003730778
       shipsMiscellaneous_sheet_8: 1444954094
       shipsMiscellaneous_sheet_91: -930995589
       shipsMiscellaneous_sheet_20: -1775895564
       shipsMiscellaneous_sheet_23: 1412202280
-      shipsMiscellaneous_sheet_87: -774461824
+      Pirate_Sail_Damaged: -774461824
       shipsMiscellaneous_sheet_28: -253657404
       shipsMiscellaneous_sheet_19: 14278595
       shipsMiscellaneous_sheet_90: -1599952786
       shipsMiscellaneous_sheet_41: -953941903
+      Cannon_Fort: -1507830531
       shipsMiscellaneous_sheet_12: -1050466603
       shipsMiscellaneous_sheet_31: -2066559579
       shipsMiscellaneous_sheet_59: 1923202072
@@ -2372,9 +2373,8 @@ TextureImporter:
       shipsMiscellaneous_sheet_35: 2136187904
       shipsMiscellaneous_sheet_1: -1989550589
       shipsMiscellaneous_sheet_51: -867128565
-      shipsMiscellaneous_sheet_86: -1378106287
       shipsMiscellaneous_sheet_89: -2120984851
-      shipsMiscellaneous_sheet_95: -1507830531
+      Pirate_Sail_Pristine: -2003730778
       shipsMiscellaneous_sheet_25: 1557879831
       shipsMiscellaneous_sheet_49: 783946419
       shipsMiscellaneous_sheet_74: 705968411
