@@ -1,14 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class GrapeShot : MonoBehaviour
+public class GrapeShot : Ammo
 {
-
     private float decay;
-    private Vector3 dir;
-    private float projectileVelocity;
 
     private void Awake()
     {
@@ -16,25 +12,27 @@ public class GrapeShot : MonoBehaviour
         projectileVelocity = 2.0f;
     }
 
-    public void SetDirectionVector(Vector3 target)
-    {
-        target.z = this.transform.position.z;       // Very importante
-        dir = (target - this.transform.position).normalized;
-        Debug.Log(dir);
-        Debug.Log(dir.magnitude);
-        gameObject.GetComponent<Rigidbody2D>().velocity = dir * projectileVelocity;
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<Ship>())
+        if(isPlayerProjectile ^ collision.gameObject.tag == "Player")
         {
-            Ship ship = collision.gameObject.GetComponent<Ship>();
-            ship.TakeManpowerDamage(10);
+            if (collision.gameObject.GetComponent<Ship>())
+            {
+                Ship ship = collision.gameObject.GetComponent<Ship>();
+                if (damage > 0)
+                {
+                    ship.TakeManpowerDamage(damage);
+                }
+                else
+                {
+                    Debug.Log("Damage is not set properly. Current value: " + damage.ToString());
+                } 
+            }
+            despawn();
         }
         else
         {
-            despawn();
+            return;
         }
     }
 
@@ -47,12 +45,6 @@ public class GrapeShot : MonoBehaviour
         else
         {
             decay -= Time.deltaTime;
-            //transform.Translate(dir * projectileVelocity * Time.deltaTime);
         }
-    }
-
-    void despawn()
-    {
-        Destroy(gameObject);
     }
 }

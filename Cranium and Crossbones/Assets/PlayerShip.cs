@@ -17,7 +17,9 @@ public class PlayerShip : Ship
     int wood;
     public Dictionary<string, string> inv;
 
-    AmmoType currentAmmoType;
+    bool isPlayer = true;
+
+    Ammo.AmmoType currentAmmoType;
 
     [SerializeField] private Transform[] selectedCannon,portCannonFireTransform, starboardCannonFireTransform;
     private float portCannonCooldown, starboardCannonCooldown;
@@ -38,7 +40,7 @@ public class PlayerShip : Ship
         actualSpeed = 0.0f;
         targetSpeed = 0.0f;
 
-        currentAmmoType = AmmoType.ROUNDSHOT;
+        currentAmmoType = Ammo.AmmoType.ROUNDSHOT;
     }
 
     // Update is called once per frame
@@ -55,24 +57,6 @@ public class PlayerShip : Ship
         }
     }
 
-    //void LoadShipStats()
-    //{
-    //    //using (StreamReader r = new StreamReader("assets/data/PlayerShipStats.json"))
-    //    //{
-    //    //    string json = r.ReadToEnd();
-    //    //    stats = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
-    //    //}
-
-    //    stats = JSONParser.ParseFromFile("assets/data/PlayerShipStats.json");
-
-    //    Initialize(
-    //        float.Parse(stats["speed"]), 
-    //        int.Parse(stats["hull"]),
-    //        int.Parse(stats["sail"]),
-    //        int.Parse(stats["manpower"])
-    //        );
-    //}
-
     void SaveShipStats()
     {
         stats["speed"] = m_speed.ToString();
@@ -83,26 +67,6 @@ public class PlayerShip : Ship
         using(StreamWriter w = new StreamWriter("assets/data/PlayerShipStats.json"))
         {
             string json = JsonConvert.SerializeObject(stats);
-            w.WriteLine(json);
-        }
-    }
-
-    void loadInventory()
-    {
-        using (StreamReader r = new StreamReader("assets/data/PlayerShipInventory.json"))
-        {
-            string json = r.ReadToEnd();
-            inv = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
-        }
-
-        wood = int.Parse(inv["wood"]);
-    }
-    void saveInventory()
-    {
-        inv["wood"] = wood.ToString();
-        using (StreamWriter w = new StreamWriter("assets/data/PlayerShipInventory.json"))
-        {
-            string json = JsonConvert.SerializeObject(inv);
             w.WriteLine(json);
         }
     }
@@ -145,32 +109,41 @@ public class PlayerShip : Ship
 
         switch (currentAmmoType)
         {
-            case AmmoType.ROUNDSHOT:
+            case Ammo.AmmoType.ROUNDSHOT:
             {
                 foreach (Transform t in selectedCannon)
                     {
                         GameObject obj = Instantiate(roundShotPrefab, t.position, Quaternion.identity);
-                        obj.GetComponent<RoundShot>().SetDirectionVector(target, true);
+                        obj.GetComponent<RoundShot>().SetDirectionVector(target, isPlayer);
+                        obj.GetComponent<Ammo>().SetProjectileDamage(
+                            AmmoDamage.Instance.getDamageValue(Ammo.AmmoType.ROUNDSHOT)
+                            );
                         Debug.Log("Roundshot out");
                     }
                 break;
             }
-            case AmmoType.CHAINSHOT:
+            case Ammo.AmmoType.CHAINSHOT:
             {
                 foreach (Transform t in selectedCannon)
                     {
                         GameObject obj = Instantiate(chainShotPrefab, t.position, Quaternion.identity);
-                        obj.GetComponent<ChainShot>().SetDirectionVector(target);
+                        obj.GetComponent<ChainShot>().SetDirectionVector(target, isPlayer);
+                        obj.GetComponent<Ammo>().SetProjectileDamage(
+                            AmmoDamage.Instance.getDamageValue(Ammo.AmmoType.CHAINSHOT)
+                            );
                         Debug.Log("chainshot out");
                     }
                 break;
             }
-            case AmmoType.GRAPESHOT:
+            case Ammo.AmmoType.GRAPESHOT:
             {
                 foreach(Transform t in selectedCannon)
                     {
                         GameObject obj = Instantiate(grapeShotPrefab, t.position, Quaternion.identity);
-                        obj.GetComponent<GrapeShot>().SetDirectionVector(target);
+                        obj.GetComponent<GrapeShot>().SetDirectionVector(target, isPlayer);
+                        obj.GetComponent<Ammo>().SetProjectileDamage(
+                            AmmoDamage.Instance.getDamageValue(Ammo.AmmoType.GRAPESHOT)
+                            );
                         Debug.Log("grapeshot out");
                     }
                 break;
@@ -178,17 +151,12 @@ public class PlayerShip : Ship
         }
     }
 
-    public void SwapAmmo(AmmoType ammoType)
+    public void SwapAmmo(Ammo.AmmoType ammoType)
     {
         currentAmmoType = ammoType;
 
         Debug.Log("Ammo type: " + ammoType.ToString());
     }
 
-    public enum AmmoType
-    {
-        ROUNDSHOT,
-        CHAINSHOT,
-        GRAPESHOT
-    };
+
 }

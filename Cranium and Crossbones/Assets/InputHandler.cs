@@ -20,15 +20,15 @@ public class InputHandler : MonoBehaviour
             player.Fire();
         }else if (Input.GetKeyDown("1"))
         {
-            player.SwapAmmo(PlayerShip.AmmoType.ROUNDSHOT);
+            player.SwapAmmo(Ammo.AmmoType.ROUNDSHOT);
         }
         else if (Input.GetKeyDown("2"))
         {
-            player.SwapAmmo(PlayerShip.AmmoType.CHAINSHOT);
+            player.SwapAmmo(Ammo.AmmoType.CHAINSHOT);
         }
         else if (Input.GetKeyDown("3"))
         {
-            player.SwapAmmo(PlayerShip.AmmoType.GRAPESHOT);
+            player.SwapAmmo(Ammo.AmmoType.GRAPESHOT);
         }
     }
 }

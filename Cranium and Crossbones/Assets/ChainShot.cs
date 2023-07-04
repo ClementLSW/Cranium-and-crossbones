@@ -2,38 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChainShot : MonoBehaviour
-{
+public class ChainShot : Ammo
+{   
     private float decay;
-    private Vector3 dir;
-    private float projectileVelocity;
-    private bool isPlayerProjectile;
 
     private void Awake()
     {
         decay = 3.0f;
         projectileVelocity = 2.0f;
     }
-    public void SetDirectionVector(Vector3 target, bool isPlayer)
-    {
-        target.z = this.transform.position.z;       // Very importante
-        dir = (target - this.transform.position).normalized;
-        Debug.Log(dir);
-        Debug.Log(dir.magnitude);
-        gameObject.GetComponent<Rigidbody2D>().velocity = dir * projectileVelocity;
-        isPlayerProjectile = isPlayer;
-    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<Ship>())
+        if(isPlayerProjectile ^ collision.gameObject.tag == "Player")
         {
-            Ship ship = collision.gameObject.GetComponent<Ship>();
-            ship.TakeSailDamage(20);
+            if (collision.gameObject.GetComponent<Ship>())
+            {
+                Ship ship = collision.gameObject.GetComponent<Ship>();
+                if(damage > 0)
+                {
+                    ship.TakeSailDamage(damage);
+                }
+                else
+                {
+                    Debug.Log("Damage is not set properly. Current value: " + damage.ToString());
+                }
+
+            }
+            despawn();
         }
         else
         {
-            despawn();
+            return;
         }
     }
 
@@ -47,12 +47,6 @@ public class ChainShot : MonoBehaviour
         else
         {
             decay -= Time.deltaTime;
-            //transform.Translate(dir * projectileVelocity * Time.deltaTime);
         }
-    }
-
-    void despawn()
-    {
-        Destroy(gameObject);
     }
 }

@@ -6,11 +6,12 @@ using UnityEngine;
 public class Ship : MonoBehaviour
 {
     [SerializeField] protected float m_speed;
-    [SerializeField] protected int m_hull_integrity;
-    [SerializeField] protected int m_sail_integrity;
+    [SerializeField] protected float m_hull_integrity;
+    [SerializeField] protected float m_sail_integrity;
     [SerializeField] protected int m_manpower;
 
-    protected int max_hull, max_sail, max_manpower;
+    protected float max_hull, max_sail;
+    protected int max_manpower;
 
     [SerializeField] private Sprite[] hull_sprites;
     [SerializeField] private Sprite[] sail_sprites;
@@ -21,7 +22,7 @@ public class Ship : MonoBehaviour
     protected Dictionary<string, string> stats;
 
     // Start is called before the first frame update
-    public virtual void Initialize(float speed, int hull, int sail, int manpower)
+    public virtual void Initialize(float speed, float hull, float sail, int manpower)
     {
 
         m_speed = speed;
@@ -40,6 +41,8 @@ public class Ship : MonoBehaviour
     public virtual void TakeHullDamage(int damage)
     {
         m_hull_integrity -= damage;
+
+        Debug.Log("Hull %: " + m_hull_integrity / max_hull);
 
         if(m_hull_integrity/max_hull < 0.1)
         {
@@ -70,7 +73,7 @@ public class Ship : MonoBehaviour
 
     public virtual void TakeManpowerDamage(int damage)
     {
-        m_manpower -= damage * (max_hull / m_hull_integrity);
+        m_manpower -= (int)Mathf.Ceil(damage * (max_hull / m_hull_integrity));
 
         Debug.Log("Manpower Left: " + m_manpower);
     }
