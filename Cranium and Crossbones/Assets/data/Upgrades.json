@@ -1,0 +1,9 @@
+{"u_h_1":{
+    "upgradeName":"Tattered Sails",
+    "upgradeSprite":"",
+    "upgradePrerequisites": "NULL"
+},
+"u_h_2":{
+
+},
+"speed":"2","hull":"100","sail":"100","manpower":"300","gp":"0","wood":"0","cloth":"0"}
