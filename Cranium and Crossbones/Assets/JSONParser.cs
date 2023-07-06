@@ -47,26 +47,53 @@ public class JSONParser
         return result;
     }
 
+    [Serializable]
     public class Wrapper<T>
     {
         public T[] Array;
     }
 
+    [Serializable]
+    public class Container
+    {
+        //public string id;
+        public Dictionary<string, string> keyValuePairs;
+    }
+
     public static List<Upgrades.Upgrade> ParseUpgrades(string filename) {
-        
-        Wrapper<Upgrades.Upgrade> result;
+
+        //Wrapper<Upgrades.Upgrade> result;
+
+        //List<Upgrades.Upgrade> upgrades = new();
+
+        //using (StreamReader r = new StreamReader("assets/data/" + filename + ".json"))
+        //{
+        //    string json = r.ReadToEnd();
+        //    Debug.Log(json);
+        //    Wrapper wrapper = JsonUtility.FromJson<random>(json);
+        //    upgrades = JsonConvert.DeserializeObject<List<Upgrades.Upgrade>>(json);
+        //    Debug.Log(upgrades);
+        //    //Debug.Log(result.Array[0]);
+        //}
+
+        ////foreach (Upgrades.Upgrade upgrade in result.Array)
+        ////{
+        ////    upgrades.Add(upgrade);
+        ////}
 
         List<Upgrades.Upgrade> upgrades = new();
 
         using (StreamReader r = new StreamReader("assets/data/" + filename + ".json"))
         {
             string json = r.ReadToEnd();
-            result = JsonConvert.DeserializeObject<Wrapper<Upgrades.Upgrade>>(json);
+            List<Container> containerlist = JsonConvert.DeserializeObject<List<Container>>(json);
+            foreach(Container c in containerlist)
+            {
+                Debug.Log(c.keyValuePairs);
+            }
         }
-        foreach (Upgrades.Upgrade upgrade in result.Array)
-        {
-            upgrades.Add(upgrade);
-        }
+
+
 
         return upgrades;
     }

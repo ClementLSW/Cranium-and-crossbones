@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static Upgrades;
 
 public class Upgrades : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class Upgrades : MonoBehaviour
             if (instance == null)
             {
                 instance = new Upgrades();
+                instance.InitializeUpgrades();
             }
 
             return instance;
@@ -23,18 +25,18 @@ public class Upgrades : MonoBehaviour
 
     public struct Upgrade
     {
-        string upgradeID;
-        string upgradeName;
-        string upgradeSprite;
-        string upgradePrerequisite;
-        int woodCost;
-        int clothCost;
-        int gunCost;
-        int doubloonCost;
-        int hullModifier;
-        int sailModifier;
-        int manpowerModifier;
-        bool isFinalTier;
+        public string upgradeID;
+        public string upgradeName;
+        public string upgradeSprite;
+        public string upgradePrerequisite;
+        public int woodCost;
+        public int clothCost;
+        public int gunCost;
+        public int doubloonCost;
+        public int hullModifier;
+        public int sailModifier;
+        public int manpowerModifier;
+        public bool isFinalTier;
 
         public Upgrade(KeyValuePair<string, string> upgradeDict)
         {
@@ -69,6 +71,24 @@ public class Upgrades : MonoBehaviour
     {
         UpgradeList = new List<Upgrade>();
         UpgradeList = JSONParser.ParseUpgrades("Upgrades");
+
+        foreach (Upgrade u in UpgradeList)
+        {
+            Debug.Log(
+                u.upgradeID +
+                u.upgradeName +
+                u.upgradeSprite +
+                u.upgradePrerequisite +
+                u.woodCost +
+                u.clothCost +
+                u.gunCost +
+                u.doubloonCost +
+                u.hullModifier +
+                u.sailModifier +
+                u.manpowerModifier +
+                u.isFinalTier
+            );
+        }
         //Dictionary<string, string> upgradeDict = JSONParser.ParseFromFile("Upgrades");
         //KeyValuePair<string, string> kvp = new KeyValuePair<string, string>() { ""}
 
