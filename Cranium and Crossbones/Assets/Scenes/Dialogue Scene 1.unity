@@ -450,7 +450,7 @@ GameObject:
   - component: {fileID: 443551961}
   - component: {fileID: 443551960}
   m_Layer: 5
-  m_Name: Image
+  m_Name: BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -575,7 +575,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9ab1dca77f904ad4d96be2d6735eb896, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a124c3ead40a74d458472e11726419c5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -607,9 +607,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Char: {fileID: 582067933}
   imageUsed:
-  - {fileID: 21300000, guid: 2e178ab90a8301e439ee17b49021db17, type: 3}
-  - {fileID: 21300000, guid: 9ab1dca77f904ad4d96be2d6735eb896, type: 3}
-  - {fileID: 21300000, guid: 32790e4975d84ec438dbffa5adb2473b, type: 3}
+  - {fileID: 21300000, guid: 08d1c5b8aa89c1640afa0c50b1e66b99, type: 3}
+  - {fileID: 21300000, guid: a124c3ead40a74d458472e11726419c5, type: 3}
+  - {fileID: 21300000, guid: f7dff569c2eaf7348bd3b08f7a41b931, type: 3}
   dialogue: {fileID: 813644517}
   ImagePos: Right
 --- !u!1 &800872047
@@ -805,37 +805,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textComponent: {fileID: 126680685}
   lines:
-  - Ahoy, Blackbeard! Fancy running into you on these treacherous seas
-  - Congrats on stealing your first ship! She ain't much AND she ain't honest but
-    more importantly she's yours!
-  - So what do i do now?
-  - What else does a pirate do? SAIL, PLUNDER, DRINK AND MAKE MERRY! No time like
-    right now!
-  - ' ''Tis a fine day for piracy. I hear whispers of untamed islands ripe for the
-    taking.'
-  - I have set my eyes on THREE islands out in the horizon due North East and West.
-    These islands would definitely prove to be most valuable to make port and expand
-    our pirate legacy. Ye want in?
-  - Ar' count me in. You know I can't turn down a challenge such as this arhahaha.
-  - Well ye best be on your way! the islands have a healthy flow of merchant ships
-    about. Sink them to get their resources, they wont pose much of a threat.
-  - Sounds like an breeze in the wind Aye
-  - Beware young skipper, the more merchants you attack, the navy of the island will
-    start to pursue you! Get rid of them and the fort on the Island and the rewards
-    are yours to reap.
-  - Well I better get to it then.
+  - Oi! Over here ya scoundrel!
+  - Arr' you must be Ben Hornigold, Blackbeard told me to find you around these parts.
+  - Why yes it is I! If Blackbeard sent ye, then you must be the one that cleared
+    the first island im guessing.
+  - Aye that be true.
+  - Wonderful! Well your journey isnt over just yet. We need this Island fort cleared
+    as well, Alas, the navy have caught wind of what happened and have already up
+    their defenses against pirates like us.
+  - No need to fear, I will make quick work of them!
+  - Ye best be right, or I would have to come down to Davy Jones Locker myself to
+    get you out of that mess.
   SpritePosition:
-  - Left
-  - Right
-  - Left
-  - Right
-  - Right
   - Right
   - Left
   - Right
   - Left
   - Right
   - Left
+  - Right
   textSpeed: 0
   index: 0
 --- !u!114 &813644520
@@ -890,17 +878,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textComponent: {fileID: 800872049}
   lines:
+  - Ben Hornigold
   - You
-  - Captain BlackBeard
+  - Ben Hornigold
   - You
-  - Captain BlackBeard
-  - Captain BlackBeard
-  - Captain BlackBeard
+  - Ben Hornigold
   - You
-  - Captain BlackBeard
-  - You
-  - Captain BlackBeard
-  - You
+  - Ben Hornigold
   SpritePosition:
   - Left
   - Right
@@ -996,7 +980,7 @@ GameObject:
   - component: {fileID: 963759259}
   - component: {fileID: 963759261}
   m_Layer: 5
-  m_Name: Image
+  m_Name: YOU
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
