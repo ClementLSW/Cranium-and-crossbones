@@ -1,0 +1,26 @@
+[
+ {
+   "NpcID": "npc_01",
+   "NpcName": "Edward \"Blackbeard\" Teach",
+   "NpcSpriteInactive": "",
+   "NpcSpriteActive": ""
+ },
+ {
+   "NpcID": "npc_02",
+   "NpcName": "Benjamin Hornigold",
+   "NpcSpriteInactive": "",
+   "NpcSpriteActive": ""
+ },
+ {
+   "NpcID": "npc_03",
+   "NpcName": "William Kidd",
+   "NpcSpriteInactive": "",
+   "NpcSpriteActive": ""
+ },
+ {
+   "NpcID": "npc_04",
+   "NpcName": "You",
+   "NpcSpriteInactive": "",
+   "NpcSpriteActive": ""
+ }
+]
