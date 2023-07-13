@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using Newtonsoft.Json;
 using System;
 using System.Collections;
@@ -47,26 +48,38 @@ public class JSONParser
         return result;
     }
 
+    [Serializable]
     public class Wrapper<T>
     {
         public T[] Array;
     }
 
-    public static List<Upgrades.Upgrade> ParseUpgrades(string filename) {
-        
-        Wrapper<Upgrades.Upgrade> result;
+    [Serializable]
+    public class Container
+    {
+        //public string id;
+        public Dictionary<string, string> keyValuePairs;
+    }
 
-        List<Upgrades.Upgrade> upgrades = new();
+    public static List<Upgrades.Upgrade> ParseUpgrades(string filename) {
+
+        Debug.Log("Starting to Parse Updates");
+        List<Upgrades.Upgrade> upgrades = new List<Upgrades.Upgrade>();
+        Debug.Log("List of upgrades created");
 
         using (StreamReader r = new StreamReader("assets/data/" + filename + ".json"))
         {
             string json = r.ReadToEnd();
-            result = JsonConvert.DeserializeObject<Wrapper<Upgrades.Upgrade>>(json);
+            Debug.Log(json);
+
+            upgrades = JsonConvert.DeserializeObject<List<Upgrades.Upgrade>>(json);
+            foreach(Upgrades.Upgrade u in upgrades)
+            {
+                Debug.Log(u.upgradeID + " - " + u.upgradeName);
+            }
         }
-        foreach (Upgrades.Upgrade upgrade in result.Array)
-        {
-            upgrades.Add(upgrade);
-        }
+
+
 
         return upgrades;
     }
