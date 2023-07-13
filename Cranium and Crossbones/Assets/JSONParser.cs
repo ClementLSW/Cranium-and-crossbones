@@ -4,7 +4,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.InteropServices;
 using UnityEngine;
+using static Dialogue;
 /// <summary>
 /// Custom Suite of tools for reading and writing to JSON
 /// </summary>
@@ -78,10 +80,39 @@ public class JSONParser
                 Debug.Log(u.upgradeID + " - " + u.upgradeName);
             }
         }
-
-
-
         return upgrades;
+    }
+
+    public static List<DialogueLine> ParseDialogue(string filename)
+    {
+        List<DialogueLine> dialogues;
+
+        using (StreamReader r = new StreamReader("assets/data/" + filename + ".json"))
+        {
+            string json = r.ReadToEnd();
+
+            dialogues = JsonConvert.DeserializeObject<List<DialogueLine>>(json);
+        }
+
+        /*foreach (DialogueLine d in dialogues)
+        {
+            Debug.Log(d.characterId + ": " + d.dialogue);
+        }*/
+
+        return dialogues;
+    }
+
+    public static List<Character> ParseCharacters(string filename)
+    {
+        List<Character> characters;
+
+        using (StreamReader r = new StreamReader("assets/data/" + filename + ".json"))
+        {
+            string json = r.ReadToEnd();
+            characters = JsonConvert.DeserializeObject<List<Character>>(json);
+        }
+
+        return characters;
     }
 
     public static Dictionary<string,string> ParseFromJSONString(string json)
