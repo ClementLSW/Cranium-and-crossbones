@@ -30,5 +30,9 @@ public class InputHandler : MonoBehaviour
         {
             player.SwapAmmo(Ammo.AmmoType.GRAPESHOT);
         }
+
+        if (Input.GetKeyDown("p")) {
+            UpgradeManager.instance.ToggleUpgradeMenu();
+        }
     }
 }
