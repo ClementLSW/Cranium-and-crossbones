@@ -75,3 +75,10 @@ crashlytics-build.properties
 */[Ll]og/*
 */[Tt]emp/*
 *.log
+
+Cranium and Crossbones\Logs\*.log
+*.log
+Cranium and Crossbones/Logs/AssetImportWorker0.log
+Cranium and Crossbones/Logs/AssetImportWorker1.log
+Cranium and Crossbones/Logs/shadercompiler-AssetImportWorker0.log
+*.dwlt
