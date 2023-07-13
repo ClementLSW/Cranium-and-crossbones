@@ -14,7 +14,8 @@ public class PlayerShip : Ship
     public float maxRotationValue = 450.0f;
     public float currentRotationValue = 0.0f;
 
-    int wood;
+    float session_hull, session_sails, session_manpower;
+
     public Dictionary<string, string> inv;
 
     bool isPlayer = true;
@@ -158,5 +159,14 @@ public class PlayerShip : Ship
         Debug.Log("Ammo type: " + ammoType.ToString());
     }
 
+    public void LoadSessionsStats() {
+        Dictionary<string, int> mods = UpgradeManager.instance.ApplyUpgrades();
+        session_hull = m_hull_integrity + mods["hull_mod"];
+        session_sails = m_sail_integrity + mods["sail_mod"];
+        session_manpower = m_manpower + mods["manpower_mod"];
+    }
 
+    public void UnloadSessionStats() {
+        session_hull = session_sails = session_manpower = 0;
+    }
 }

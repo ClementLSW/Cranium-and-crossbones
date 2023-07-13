@@ -24,8 +24,8 @@ public class Inventory : MonoBehaviour
     }
 
 
-    Dictionary<string, int> ShipInventory;
-    Dictionary<string, int> BaseInventory;
+    public Dictionary<string, int> ShipInventory;
+    public Dictionary<string, int> BaseInventory;
 
     TMP_Text ship_inv_text;
     TMP_Text base_inv_text;
@@ -227,20 +227,25 @@ public class Inventory : MonoBehaviour
             switch (value.resource)
             {
                 case 0:
-                    if (ShipInventory["Wood"] < value.qty)
+                    if (BaseInventory["Wood"] < value.qty)
                     {
                         return false;
                     }
                     break;
                 case 1:
-                    if (ShipInventory["Cloth"] < value.qty)
+                    if (BaseInventory["Cloth"] < value.qty)
                     {
                         return false;
                     }
                     break;
                 case 2:
-                    if (ShipInventory["Guns"] < value.qty)
+                    if (BaseInventory["Guns"] < value.qty)
                     {
+                        return false;
+                    }
+                    break;
+                case 3:
+                    if (BaseInventory["Doubloons"] < value.qty) {
                         return false;
                     }
                     break;
@@ -249,25 +254,33 @@ public class Inventory : MonoBehaviour
         return true;
     }
 
-    public void ConsumeResource(List<(int resource, int qty)> values)
+    public bool ConsumeResource(List<(int resource, int qty)> values)
     {
-        if (ValidateResourceAvailability(values))
-
-        foreach ((int resource, int qty) value in values)
-        {
-            switch (value.resource)
+        if (ValidateResourceAvailability(values)) {
+            foreach ((int resource, int qty) value in values)
             {
-                case 0:
-                    ShipInventory["Wood"] -= value.qty;
-                    break;
-                case 1:
-                    ShipInventory["Cloth"] -= value.qty;
-                    break;
-                case 2:
-                    ShipInventory["Guns"] -= value.qty;
-                    break;
+                switch (value.resource)
+                {
+                    case 0:
+                        BaseInventory["Wood"] -= value.qty;
+                        break;
+                    case 1:
+                        BaseInventory["Cloth"] -= value.qty;
+                        break;
+                    case 2:
+                        BaseInventory["Guns"] -= value.qty;
+                        break;
+                    case 3:
+                        BaseInventory["Doubloons"] -= value.qty;
+                        break;
+                }
             }
+            return true;
         }
+        else {
+            return false;
+        }
+        
     }
 
     public void TransferShipToBase()
@@ -290,10 +303,10 @@ public class Inventory : MonoBehaviour
         };
 
         GetShipInventory(ship_inv_text);
-        GetBaseInventory(base_inv_text);
+        DebugGetBaseInventory(base_inv_text);
     }
 
-    public void GetBaseInventory(TMP_Text text)
+    public void DebugGetBaseInventory(TMP_Text text)
     {
         base_inv_text = text;
 
@@ -302,7 +315,6 @@ public class Inventory : MonoBehaviour
         {
             text.text += key + ": " + BaseInventory[key] + "\n"; 
         }
-
     }
 
     public void SaveBaseInventory()

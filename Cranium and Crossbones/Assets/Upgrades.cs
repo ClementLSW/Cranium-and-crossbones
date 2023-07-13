@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using static Upgrades;
 
 public class Upgrades : MonoBehaviour
 {
@@ -22,9 +21,7 @@ public class Upgrades : MonoBehaviour
             return instance;
         }
     }
-
-    public struct Upgrade
-    {
+    public struct Upgrade {
         public string upgradeID;
         public string upgradeName;
         public string upgradeSprite;
@@ -38,30 +35,19 @@ public class Upgrades : MonoBehaviour
         public int manpowerModifier;
         public bool isFinalTier;
 
-        public Upgrade(KeyValuePair<string, string> upgradeDict)
-        {
-            upgradeID = upgradeDict.Key;
-
-            Dictionary<string, string> details = JSONParser.ParseFromJSONString(upgradeDict.Value);
-
-            upgradeName = details["upgradeName"];
-            upgradeSprite = details["upgradeSprite"];
-            if (details["upgradePreRequisite"] == "NULL")
-            {
-                upgradePrerequisite = null;
-            }
-            else
-            {
-                upgradePrerequisite = details["upgradePreRequisite"];
-            }
-            woodCost = int.Parse(details["woodCost"]);
-            clothCost = int.Parse(details["clothCost"]);
-            gunCost = int.Parse(details["gunCost"]);
-            doubloonCost = int.Parse(details["doubloonCost"]);
-            hullModifier = int.Parse(details["hullModifier"]);
-            sailModifier = int.Parse(details["sailModifier"]);
-            manpowerModifier = int.Parse(details["manpowerModifier"]);
-            isFinalTier = (details["finalTier"] == "TRUE") ? true : false;
+        public Upgrade(string id) {
+            upgradeID = id;
+            upgradeName = "";
+            upgradeSprite = "";
+            upgradePrerequisite = "";
+            woodCost = 0;
+            clothCost = 0;
+            gunCost = 0;
+            doubloonCost = 0;
+            hullModifier = 0;
+            sailModifier = 0;
+            manpowerModifier = 0;
+            isFinalTier = false;
         }
     }
 
@@ -71,30 +57,7 @@ public class Upgrades : MonoBehaviour
     {
         UpgradeList = new List<Upgrade>();
         UpgradeList = JSONParser.ParseUpgrades("Upgrades");
-
-        foreach (Upgrade u in UpgradeList)
-        {
-            Debug.Log(
-                u.upgradeID +
-                u.upgradeName +
-                u.upgradeSprite +
-                u.upgradePrerequisite +
-                u.woodCost +
-                u.clothCost +
-                u.gunCost +
-                u.doubloonCost +
-                u.hullModifier +
-                u.sailModifier +
-                u.manpowerModifier +
-                u.isFinalTier
-            );
-        }
-        //Dictionary<string, string> upgradeDict = JSONParser.ParseFromFile("Upgrades");
-        //KeyValuePair<string, string> kvp = new KeyValuePair<string, string>() { ""}
-
-        //Upgrade u = new Upgrade(upgradeDict);
-
-
+        Debug.Log(UpgradeList);
     }
 
     // Start is called before the first frame update

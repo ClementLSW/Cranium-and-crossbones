@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using Newtonsoft.Json;
 using System;
 using System.Collections;
@@ -62,34 +63,19 @@ public class JSONParser
 
     public static List<Upgrades.Upgrade> ParseUpgrades(string filename) {
 
-        //Wrapper<Upgrades.Upgrade> result;
-
-        //List<Upgrades.Upgrade> upgrades = new();
-
-        //using (StreamReader r = new StreamReader("assets/data/" + filename + ".json"))
-        //{
-        //    string json = r.ReadToEnd();
-        //    Debug.Log(json);
-        //    Wrapper wrapper = JsonUtility.FromJson<random>(json);
-        //    upgrades = JsonConvert.DeserializeObject<List<Upgrades.Upgrade>>(json);
-        //    Debug.Log(upgrades);
-        //    //Debug.Log(result.Array[0]);
-        //}
-
-        ////foreach (Upgrades.Upgrade upgrade in result.Array)
-        ////{
-        ////    upgrades.Add(upgrade);
-        ////}
-
-        List<Upgrades.Upgrade> upgrades = new();
+        Debug.Log("Starting to Parse Updates");
+        List<Upgrades.Upgrade> upgrades = new List<Upgrades.Upgrade>();
+        Debug.Log("List of upgrades created");
 
         using (StreamReader r = new StreamReader("assets/data/" + filename + ".json"))
         {
             string json = r.ReadToEnd();
-            List<Container> containerlist = JsonConvert.DeserializeObject<List<Container>>(json);
-            foreach(Container c in containerlist)
+            Debug.Log(json);
+
+            upgrades = JsonConvert.DeserializeObject<List<Upgrades.Upgrade>>(json);
+            foreach(Upgrades.Upgrade u in upgrades)
             {
-                Debug.Log(c.keyValuePairs);
+                Debug.Log(u.upgradeID + " - " + u.upgradeName);
             }
         }
 

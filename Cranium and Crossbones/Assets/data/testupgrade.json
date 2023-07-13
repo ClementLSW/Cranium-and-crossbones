@@ -1,0 +1,8 @@
+[
+    {"upgradeID":"Test_ID",
+    "upgradeName":"Test_Name",
+    "upgradeSprite":"Test_Sprite",
+    "upgradePrerequisite":"",
+    "woodCost":0,"clothCost":0,"gunCost":0,"doubloonCost":0,"hullModifier":0,"sailModifier":0,"manpowerModifier":0,"isFinalTier":false},
+    {"upgradeID":"Test_ID","upgradeName":"Test_Name","upgradeSprite":"Test_Sprite","upgradePrerequisite":"","woodCost":0,"clothCost":0,"gunCost":0,"doubloonCost":0,"hullModifier":0,"sailModifier":0,"manpowerModifier":0,"isFinalTier":false}
+]
